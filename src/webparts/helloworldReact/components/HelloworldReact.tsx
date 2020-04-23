@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styles from './HelloworldReact.module.scss';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { List, values } from 'office-ui-fabric-react';
-
+import { List, values, DetailsList, Persona } from 'office-ui-fabric-react';
+import { GraphHelper } from '../../../Helpers/GraphHelper';
 
 export interface IHelloworldReactProps {
   description: string;
@@ -10,6 +10,7 @@ export interface IHelloworldReactProps {
 }
 export interface IHelloworldReactState {
   items: any[];
+  user?: any;
 }
 
 
@@ -23,14 +24,15 @@ export default class HelloworldReact extends React.Component<IHelloworldReactPro
 
   }
 
-  public componentDidMount() {
+  public async componentDidMount() {
 
     var results = [{ name: 'Foo' }, { name: 'Bar' }];
     setTimeout(() => {
       this.setState({ items: results });
     }, 2000);
 
-
+    const user = await GraphHelper.getUser();
+    this.setState({ user: user });
 
   }
 
@@ -40,7 +42,7 @@ export default class HelloworldReact extends React.Component<IHelloworldReactPro
         <div className={styles.container}>
           <div className={styles.row}>
             <div className={styles.column}>
-              <List items={this.state.items} />
+              <DetailsList items={this.state.items} />
 
 
               {

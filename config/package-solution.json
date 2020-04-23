@@ -5,7 +5,13 @@
     "id": "628c3bff-0c70-48ec-a1f2-f31809ed8b3a",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/hello-world.sppkg"

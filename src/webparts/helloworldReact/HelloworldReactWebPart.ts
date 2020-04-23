@@ -9,6 +9,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'HelloworldReactWebPartStrings';
 import HelloworldReact, { IHelloworldReactProps } from './components/HelloworldReact';
+import { GraphHelper } from '../../Helpers/GraphHelper';
 
 
 export interface IHelloworldReactWebPartProps {
@@ -17,6 +18,14 @@ export interface IHelloworldReactWebPartProps {
 }
 
 export default class HelloworldReactWebPart extends BaseClientSideWebPart<IHelloworldReactWebPartProps> {
+
+  public async onInit() {
+    return super.onInit().then(async (_) => {
+
+      await GraphHelper.init(this.context.msGraphClientFactory);
+      return;
+    });
+  }
 
   public render(): void {
     const element: React.ReactElement<IHelloworldReactProps> = React.createElement(
