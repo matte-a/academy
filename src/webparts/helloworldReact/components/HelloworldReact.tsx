@@ -11,6 +11,7 @@ export interface IHelloworldReactProps {
 export interface IHelloworldReactState {
   items: any[];
   user?: any;
+  photo?: any;
 }
 
 
@@ -32,6 +33,16 @@ export default class HelloworldReact extends React.Component<IHelloworldReactPro
     }, 2000);
 
     const user = await GraphHelper.getUser();
+
+    const res = await GraphHelper.getUserPhoto();
+
+    var reader = new FileReader();
+    reader.readAsDataURL(res);
+    reader.onloadend = () => {
+      var base64data = reader.result;
+      this.setState({ photo: base64data });
+    };
+
     this.setState({ user: user });
 
   }
@@ -43,7 +54,7 @@ export default class HelloworldReact extends React.Component<IHelloworldReactPro
           <div className={styles.row}>
             <div className={styles.column}>
               <DetailsList items={this.state.items} />
-
+              {this.state.photo && <img src={this.state.photo}></img>}
 
               {
                 this.state.items.map((val) => {
