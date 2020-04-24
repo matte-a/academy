@@ -17,11 +17,20 @@
           "manifest": "./src/webparts/helloworldReact/HelloworldReactWebPart.manifest.json"
         }
       ]
+    },
+    "menu-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/menu/MenuApplicationCustomizer.js",
+          "manifest": "./src/extensions/menu/MenuApplicationCustomizer.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
-    "HelloworldReactWebPartStrings": "lib/webparts/helloworldReact/loc/{locale}.js"
+    "HelloworldReactWebPartStrings": "lib/webparts/helloworldReact/loc/{locale}.js",
+    "MenuApplicationCustomizerStrings": "lib/extensions/menu/loc/{locale}.js"
   }
 }

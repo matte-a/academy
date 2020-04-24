@@ -11,6 +11,20 @@
         "resource": "Microsoft Graph",
         "scope": "User.Read"
       }
+    ],
+    "features": [
+      {
+        "title": "Application Extension - Deployment of custom action.",
+        "description": "Deploys a custom action with ClientSideComponentId association",
+        "id": "2596c6f9-5b75-459d-92e5-03824662c2a3",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml",
+            "ClientSideInstance.xml"
+          ]
+        }
+      }
     ]
   },
   "paths": {
